@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    /* General Page Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Form Styles */
+    .form-container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-container h3 {
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Label Styles */
+    .form-label {
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    /* Input Styles */
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+      background-color: #fafafa;
+    }
+
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+
+    /* Checkbox Styles */
+    .form-check-label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Form Text */
+    .form-text {
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    /* Flash message styles */
+    .alert {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .alert-success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .alert-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px;
+      }
+
+      .btn-primary {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flash message display -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Form Start -->
+  <form class="form-container" method="POST" action="/">
+    <h3>Login</h3>
+
+    <!-- User Name -->
+    <div class="mb-3">
+      <label for="userName" class="form-label">User Name</label>
+      <input type="text" name="userName" class="form-control" id="userName" placeholder="Enter your username" required>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" name="exampleInputPassword1" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" required>
+    </div>
+
+    <!-- Remember me Checkbox -->
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn-primary">Login</button>
+    </div>
+  </form>
+
+</body>
+</html>
